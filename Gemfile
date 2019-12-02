@@ -16,6 +16,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'rails-i18n'
 gem 'tty-spinner'
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails'
