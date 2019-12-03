@@ -16,6 +16,11 @@ RSpec.describe User, type: :model do
    it {is_expected.to validate_uniqueness_of(:user_name).ignoring_case_sensitivity}
   end
 
+  context "testing associations" do
+    it { is_expected.to have_many(:videos).dependent(:destroy) }
+  end
+  
+
 
   
 end
