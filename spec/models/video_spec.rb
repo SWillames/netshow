@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "testing validations" do
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:url) }
+    it {is_expected.to validate_presence_of(:count_view)}
+  end
+  
+  
+  context "testing associations" do
+    it { is_expected.to belong_to(:user) } 
+  end
+  
 end
