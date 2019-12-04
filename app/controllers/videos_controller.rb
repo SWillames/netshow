@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   # GET /videos
@@ -28,7 +29,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class VideosController < ApplicationController
   def update
     respond_to do |format|
       if @video.update(video_params)
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Video was successfully updated.' }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit }
@@ -69,6 +70,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:title, :url, :cont_view, :user_id)
+      params.require(:video).permit(:title, :url, :count_view, :user_id)
     end
 end
