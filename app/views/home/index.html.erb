@@ -6,6 +6,15 @@
   <p>Titulo: <span class="has-text-weight-bold"><%= video.title %></span></p>
   <p>Visualização: <span class="tag is-success"><%= video.count_view %></span></p>
 <% end %>
+
+
+<% if user_signed_in?  %>
+  <p>Usuário Logado, <strong><%= current_user.first_name %></strong></p>
+  
+  <% else %>
+  <p>Usuário NÃO ESTÁ  Logado</p>
+<% end %>
+
 <ul>
     <li><%= link_to 'Sign_in', new_user_session_path %></li>
     <li><%= link_to 'Sign_up', new_user_registration_path %></li>
